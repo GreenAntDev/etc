@@ -1,5 +1,3 @@
-import { Session } from "https://deno.land/x/neo4j_lite_client@4.4.1-preview/mod.ts";
-export { Session, Transaction } from "https://deno.land/x/neo4j_lite_client@4.4.1-preview/mod.ts";
 export * as Chai from "https://cdn.skypack.dev/chai@4.3.4?dts";
 
 export interface IDictionary {
@@ -18,9 +16,6 @@ export interface APIContext {
 export interface APITenantContext {
     id: string,
     domain: string,
-    db: Session,
-    cache: ICache,
-    storage: IStorage,
     user: Object
 }
 
@@ -77,19 +72,6 @@ export interface IMessage {
 export interface IQuery {
     query?: IDictionary,
     fields?: string[]
-}
-
-export interface IStorage {
-    retrieve: (key: string) => any,
-    save: (key: string, value: Uint8Array) => any,
-    delete: (key: string) => any
-}
-
-export interface ICache {
-    get: (key: string) => any,
-    set: (key: string, value: any, expires?: number) => any,
-    setExpires: (key: string, expires?: number) => undefined,
-    remove: (key: string) => any
 }
 
 export interface IFeature {
